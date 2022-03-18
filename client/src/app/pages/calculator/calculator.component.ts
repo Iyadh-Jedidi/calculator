@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CalculatorService } from 'src/app/shared/services/calculator.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-calculator',
@@ -14,11 +15,13 @@ export class CalculatorComponent {
 
   constructor(
     private calculatorService: CalculatorService,
+    private toastr: ToastrService,
   ) {
 
   }
 
   pressNum(elt: string) {
+    this.result = '';
     this.input += elt;
 
   }
@@ -32,10 +35,10 @@ export class CalculatorComponent {
   }
   clearOne(): void {
     this.result = '';
-    if (this.input[this.input.length - 1] === ' '){
+    if (this.input[this.input.length - 1] === ' ') {
       this.input = this.input.substring(0, this.input.length - 2);
     }
-    if (this.operators.includes(this.input[this.input.length - 1]) ) {
+    if (this.operators.includes(this.input[this.input.length - 1])) {
       this.input = this.input.substring(0, this.input.length - 2);
 
     } else {
@@ -44,13 +47,11 @@ export class CalculatorComponent {
     }
   }
   getResult() {
-    console.log(this.input);
     this.calculatorService.getResult(this.input).subscribe(data => {
-      console.log(data);
       this.result = data;
     }, error => {
-      window.alert('problem');
-
+      this.toastr.error('Please correct your expression !');
+      this.result = 'ERROR';
     });
   }
 
