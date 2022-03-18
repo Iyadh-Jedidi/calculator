@@ -1,5 +1,5 @@
 
-/** Ce ficher sert à regrouper tous les routes des différents composants du projet **/
+/** This file is used to group all the routes of the different components of the project **/
 
 import express from 'express';
 const router = express.Router();
