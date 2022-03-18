@@ -1,0 +1,13 @@
+.container-fluid {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../../assets/test3.webp");
+  background-repeat: no-repeat;
+
+}
+
+.calc{
+  border-radius: 3%;
+}
