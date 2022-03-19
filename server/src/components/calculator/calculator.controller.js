@@ -8,7 +8,10 @@
 export function calculator(tab) {
     try {
         if (tab.length == 1) {
-            return { code: isNaN(tab[0]) ? 500 : tab[0]== Infinity ? 500 : 200, result: tab[0] }
+            return { 
+                code: isNaN(tab[0]) ? 500 : tab[0]== Infinity || tab[0]== -Infinity ? 500 : 200,
+                result: isNaN(tab[0]) ? "Expression not valid" : tab[0]== Infinity || tab[0]== -Infinity ? "Expression not valid" : tab[0]
+            }
 
         } else {
             let operators = {
